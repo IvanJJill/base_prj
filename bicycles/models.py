@@ -9,5 +9,5 @@ class Bicycle(models.Model):
     description = models.TextField()  # text description of the bike. in html
     available = models.BinaryField()  # available or in use right now
     # occupied_order = models.ForeignKey()  # order id that the bike is occupied now
-    image = models.ImageField()  # bike image for web
+    image = models.CharField(max_length=200)  # models.ImageField()  # bike image for web
     status = models.IntegerField(default=0)  # technical status - new, worn, to maintenance etc.
