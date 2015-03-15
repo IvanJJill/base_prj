@@ -4,3 +4,4 @@ basic django project for practice
 2. Django views
 3. Django models
 4. Django URLs
+5. Configure PyCharm
