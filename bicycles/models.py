@@ -16,21 +16,8 @@ class Bicycle(models.Model):
     value = models.FloatField('Value in money', )  # bike value in f.ex. EUR to calculate the price
 
     """to return a name of itself when called from anywhere"""
-    def __unicode__(self):
+    def __str__(self):
         return self.title
-
-
-class Order(models.Model):
-    date_created = models.DateTimeField(auto_now=True)
-    date_start = models.DateTimeField()
-    date_end = models.DateTimeField()
-    days = models.IntegerField()
-    hours_above_days = models.IntegerField()
-    client = models.ForeignKey(Client, verbose_name="ordered by")
-    bicycle = models.ForeignKey(Bicycle, verbose_name="ordered bicycle")
-    payed = models.BinaryField()
-    invoiced = models.BinaryField()
-    price = models.FloatField()  # on order create price will be calculated depending on order date/days/value
 
 
 class Client(models.Model):
@@ -46,3 +33,17 @@ class Client(models.Model):
     email = models.CharField(max_length=60)
     phone = models.CharField(max_length=12)
     location = models.CharField(blank=True)
+
+
+class Order(models.Model):
+    date_created = models.DateTimeField(auto_now=True)
+    date_start = models.DateTimeField()
+    date_end = models.DateTimeField()
+    days = models.IntegerField()
+    hours_above_days = models.IntegerField()
+    client = models.ForeignKey(Client, verbose_name="ordered by")
+    bicycle = models.ForeignKey(Bicycle, verbose_name="ordered bicycle")
+    payed = models.BinaryField()
+    invoiced = models.BinaryField()
+    price = models.FloatField()  # on order create price will be calculated depending on order date/days/value
+
