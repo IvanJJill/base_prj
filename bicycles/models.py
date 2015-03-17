@@ -36,13 +36,13 @@ class Client(models.Model):
 
 class Order(models.Model):
     date_created = models.DateTimeField(auto_now=True)
-    date_start = models.DateTimeField()
-    date_end = models.DateTimeField()
-    days = models.IntegerField()
-    hours_above_days = models.IntegerField()
+    date_start = models.DateTimeField(blank=True)
+    date_end = models.DateTimeField(blank=True)
+    days = models.IntegerField(default=0)
+    hours_above_days = models.IntegerField(default=0)
     client = models.ForeignKey(Client, verbose_name="ordered by")
     bicycle = models.ForeignKey(Bicycle, verbose_name="ordered bicycle")
-    payed = models.BinaryField()
-    invoiced = models.BinaryField()
-    price = models.FloatField()  # on order create price will be calculated depending on order date/days/value
+    payed = models.BinaryField(default=False)
+    invoiced = models.BinaryField(default=False)
+    price = models.FloatField(default=0.0)  # on order create price will be calculated depending on order date/days/value
 
