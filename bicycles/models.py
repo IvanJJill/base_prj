@@ -27,7 +27,7 @@ class Client(models.Model):
         ('Miss', 'Ms'),
     )
 
-    title = models.CharField('Client title', max_length=1, choices=TITLES)
+    title = models.CharField(max_length=1, choices=TITLES)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.CharField(max_length=60)
