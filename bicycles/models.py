@@ -15,7 +15,7 @@ class Bicycle(models.Model):
     value = models.FloatField('value in money')  # bike value in f.ex. EUR to calculate the price
 
     """to return a name of itself when called from anywhere"""
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
 
