@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Bicycle(models.Model):
-    title = models.CharField("bicycle title", max_length=60)  # bicycle title
+    title = models.CharField(u"bicycle title", max_length=60)  # bicycle title
     type_make = models.CharField('bicycle manufacturer', max_length=20)  # bicycle manufacturer
     type_model = models.CharField('manufacturer model', max_length=20)  # manufacturer model
     type_frame = models.IntegerField('frame type', default=1)  # frame type = road/mountain/fixie/etc
