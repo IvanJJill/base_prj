@@ -11,24 +11,35 @@ class Bicycle(models.Model):
         (5, 'In repair'),
         (6, 'Unknown'),
     )
-
+    FRAME = (
+        (1, 'Fixie'),
+        (2, 'Mountain'),
+        (3, 'Road'),
+        (4, 'High Nelly'),
+        (5, 'Dutch'),
+        (6, 'Tricycle'),
+        (7, 'Tandem'),
+        (99, 'Unknown'),
+    )
+    GENDER = (
+        (1, "Ladies"),
+        (2, "Gents"),
+        (3, "Child"),
+        (4, "Uni"),
+    )
     SIZE = (
-        (1, 'Ladies L'),
-        (2, 'Ladies M'),
-        (3, 'Ladies S'),
-        (4, 'Gents L'),
-        (5, 'Gents M'),
-        (6, 'Gents S'),
-        (7, 'Child L'),
-        (8, 'Child M'),
-        (9, 'Child S'),
-        (99, 'Unknown')
+        (1, "XS"),
+        (2, "S"),
+        (3, "M"),
+        (4, "L"),
+        (5, "XL"),
+        (99, 'Unknown'),
     )
     title = models.CharField(u"bicycle title", max_length=60, default='')  # bicycle title
     type_make = models.CharField('bicycle manufacturer', max_length=20, default='', blank=True)  # bicycle manufacturer
     type_model = models.CharField('manufacturer model', max_length=20, default='', blank=True)  # manufacturer model
-    type_frame = models.IntegerField('frame type', default=1, blank=True)  # frame type = road/mountain/fixie/etc
-    type_gender = models.IntegerField('gender type', default=1)  # male/fem/uni/child
+    type_frame = models.IntegerField('frame type', default=1, max_length=2, choices=FRAME)  # frame type = road/mountain/fixie/etc
+    type_gender = models.IntegerField('gender type', default=1, max_length=2, choices=GENDER)  # male/fem/uni/child
     type_height = models.IntegerField('height category', default=1, max_length=2, choices=SIZE)  # depend on frame/gender will be sets of sizes
     description = models.TextField('text description', default='default description')  # text description of the bike
     available = models.NullBooleanField(default=False)  # available or in use right now
