@@ -42,7 +42,7 @@ class Order(models.Model):
     hours_above_days = models.IntegerField(default=0)
     client = models.ForeignKey(Client, verbose_name="ordered by")
     bicycle = models.ForeignKey(Bicycle, verbose_name="ordered bicycle")
-    paid = models.BooleanField(default=False)
-    invoiced = models.BooleanField()
+    paid = models.BooleanField('order has been paid', default=None)
+    invoiced = models.BooleanField('order has been invoiced', default=None)
     price = models.FloatField(default=0.0)  # on order create price will be calculated depending on order date/days/value
 
