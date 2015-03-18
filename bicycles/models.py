@@ -8,8 +8,8 @@ class Bicycle(models.Model):
     type_frame = models.IntegerField('frame type', default=1)  # frame type = road/mountain/fixie/etc
     type_gender = models.IntegerField('gender type', default=1)  # male/fem/uni/child
     type_height = models.IntegerField('height category', default=1)  # depend on frame/gender will be sets of sizes
-    description = models.TextField('text description', default='default desciption')  # text description of the bike
-    available = models.BooleanField('availability', default=True)  # available or in use right now
+    description = models.TextField('text description', default='default description')  # text description of the bike
+    available = models.BooleanField('availability')  # available or in use right now
     images = models.CharField('bike image for web', max_length=256, default='')  # bike image for web
     status = models.IntegerField('maintenance status', default=0)  # technical status - new, worn, to maintenance etc.
     value = models.FloatField('value in money', default=0.0)  # bike value in f.ex. EUR to calculate the price
@@ -42,7 +42,7 @@ class Order(models.Model):
     hours_above_days = models.IntegerField(default=0)
     client = models.ForeignKey(Client, verbose_name="ordered by")
     bicycle = models.ForeignKey(Bicycle, verbose_name="ordered bicycle")
-    payed = models.BooleanField(default=False)
-    invoiced = models.BooleanField(default=False)
+    payed = models.BooleanField(d)
+    invoiced = models.BooleanField()
     price = models.FloatField(default=0.0)  # on order create price will be calculated depending on order date/days/value
 
