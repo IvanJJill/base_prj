@@ -1,10 +1,17 @@
 from django.shortcuts import render
+from django.template import RequestContext, loader
 from django.http import HttpResponse
 from bicycles.models import Bicycle, Order, Client
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the bikes index.")
+    bicycles_list = Bicycle.objects.order_by('-type_make')[:5]
+    template = loader.get_template('bicycles/index.html')
+    context = RequestContext(request, {
+        'bicycles_list':bicycles_list,
+
+    })
+    return HttpResponse(template.render(context))
 
 
 def bike_details(request, bike_id):
