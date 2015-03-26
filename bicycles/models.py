@@ -67,7 +67,7 @@ class Client(models.Model):
     location = models.CharField(max_length=12, blank=True)
 
     def __str__(self):
-        return ' '.join(self.title, self.first_name, self.last_name)
+        return self.title + ' ' + self.first_name + ' ' + self.last_name
 
 
 class Order(models.Model):
@@ -83,5 +83,5 @@ class Order(models.Model):
     price = models.FloatField(default=0.0)  # on order create price will be calculated depending on order date/days/value
 
     def __str__(self):
-        return ' '.join(self.id, self.client, self.bicycle)
+        return self.id + ' ' + self.client + ' ' + self.bicycle
 
