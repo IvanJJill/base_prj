@@ -83,5 +83,5 @@ class Order(models.Model):
     price = models.FloatField(default=0.0)  # on order create price will be calculated depending on order date/days/value
 
     def __str__(self):
-        return str(self.id) + ' ' + self.client + ' ' + self.bicycle
+        return str(self.id) + ' cl:' + str(self.client) + ' bk:' + str(self.bicycle)
 
