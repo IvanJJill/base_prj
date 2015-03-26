@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from bicycles.models import Bicycle, Order, Client
 
 
 def index(request):
